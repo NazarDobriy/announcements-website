@@ -1,15 +1,21 @@
 <div class="container">
     <div *ngIf="loading; else spinner">
         <div class="announcements-list" *ngFor="let announcement of announcements">
-            <div class="announcement-block">
-                <p>Title: {{ announcement.title }}</p>
-                <p>Description: {{ announcement.description }}</p>
-                <p>Date: {{ announcement.date }}</p>
+            <div class="announcement">
+                <p class="announcement-title">{{ announcement.title }}</p>
+                <p class="announcement-description">{{ announcement.description }}</p>
+                <p class="announcement-date">Date: {{ announcement.date }}</p>
+                <div class="announcement-control-buttons">
+                    <button class="btn btn-edit">
+                        <a [routerLink]="['/edit', announcement.id]" class="link-edit">Edit</a>
+                    </button>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
             </div>
         </div>
     </div>
 
     <ng-template #spinner>
-        <mat-progress-spinner value="40"></mat-progress-spinner>
+        <mat-spinner color="warn" class="spinner"></mat-spinner>
     </ng-template>
 </div>

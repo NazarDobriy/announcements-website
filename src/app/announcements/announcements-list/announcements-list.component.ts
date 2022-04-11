@@ -10,13 +10,17 @@ import { AnnouncementService } from 'src/app/announcement.service';
 export class AnnouncementsListComponent implements OnInit {
   public announcements!: IAnnouncement[];
   public loading: boolean = false;
+  public isAnnouncement: boolean = false;
 
   constructor(private announcementService: AnnouncementService) {}
 
   ngOnInit(): void {
     this.announcementService.getAllAnnouncements().subscribe((responce: IAnnouncement[]) => {
       this.announcements = responce;
-      this.loading = false;
+      this.loading = true;
+      if (this.announcements.length) {
+        this.isAnnouncement = true;
+      }
     });
   }
 

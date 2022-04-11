@@ -2,11 +2,54 @@
     margin: auto;
     width: 90%;
 
+    .announcements-list:first-child {
+        padding: 25px 0;
+    }
+
     .announcements-list {
-        padding: 15px 0;
-        .announcement-block {
-            padding: 0 15px;
-            border: 1px solid red;
+        padding-bottom: 25px;
+        .announcement {
+            padding: 5px 15px;
+            background-color: khaki;
+            
+            &-title { 
+                font-weight: 500;
+                margin-top: 5px;
+            }
+
+            &-control-buttons {
+                .btn {
+                    cursor: pointer;
+                    font-family: inherit;
+                    letter-spacing: inherit;
+                    border-width: 0;
+                    border-radius: 5px;
+                    padding: 7px 15px;
+                    margin-bottom: 5px;
+                    transition: 0.4s;
+                }
+
+                .btn-edit {
+                    background-color: lightgreen;
+                    margin-right: 12px;
+                }
+
+                .btn-delete {
+                    background-color: crimson;
+                }
+
+                .link-edit {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
         }
+    }
+
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
     }
 }
