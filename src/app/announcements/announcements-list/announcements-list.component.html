@@ -1,1 +1,15 @@
-<p>announcements-list works!</p>
+<div class="container">
+    <div *ngIf="loading; else spinner">
+        <div class="announcements-list" *ngFor="let announcement of announcements">
+            <div class="announcement-block">
+                <p>Title: {{ announcement.title }}</p>
+                <p>Description: {{ announcement.description }}</p>
+                <p>Date: {{ announcement.date }}</p>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #spinner>
+        <mat-progress-spinner value="40"></mat-progress-spinner>
+    </ng-template>
+</div>

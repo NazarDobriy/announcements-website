@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backendLink: "https://announcement-flask-server.herokuapp.com/"
 };

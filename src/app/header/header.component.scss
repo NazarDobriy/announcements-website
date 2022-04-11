@@ -1,0 +1,44 @@
+.header {
+    padding: 10px 0;
+    border-bottom: 2px solid grey;
+
+    &-container {
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+
+        &-logo {
+            .blog {
+                height: 42px;
+                width: 45px;
+            }
+        }
+
+        .btn-create {
+            padding: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: inherit;
+            background-color: gold;
+            border-width: 0;
+            border-radius: 5px;
+            transition: 0.4s;
+
+            .link-create {
+                text-decoration: none;
+                transition: 0.4s;
+            }
+        }
+
+        .btn-create:hover {
+            background-color: black;
+            color: white;
+
+            .link-create {
+                color: white;
+            }
+        }
+    }
+}

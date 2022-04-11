@@ -1,0 +1,12 @@
+.container {
+    margin: auto;
+    width: 90%;
+
+    .announcements-list {
+        padding: 15px 0;
+        .announcement-block {
+            padding: 0 15px;
+            border: 1px solid red;
+        }
+    }
+}

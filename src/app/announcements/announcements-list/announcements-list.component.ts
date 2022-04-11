@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IAnnouncement } from 'src/app/models/announcement.interface';
+import { AnnouncementService } from 'src/app/announcement.service';
 
 @Component({
   selector: 'app-announcements-list',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcements-list.component.scss']
 })
 export class AnnouncementsListComponent implements OnInit {
+  public announcements!: IAnnouncement[];
+  public loading: boolean = false;
 
-  constructor() { }
+  constructor(private announcementService: AnnouncementService) {}
 
   ngOnInit(): void {
+    this.announcementService.getAllAnnouncements().subscribe((responce: IAnnouncement[]) => {
+      this.announcements = responce;
+      this.loading = false;
+    });
   }
 
 }
