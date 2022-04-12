@@ -1,7 +1,12 @@
 <div class="container">
     <ng-container *ngIf="loading; else spinner">
         <ng-container *ngIf="isAnnouncement; else text">
-            <div class="announcements-list" *ngFor="let announcement of announcements">
+            <div class="search">
+                <img src="../../../assets/img/search.png" alt="Search" class="search-img">
+                <input name="searchValue" type="text" class="search-input" [(ngModel)]="searchTitle">
+            </div>
+
+            <div class="announcements-list" *ngFor="let announcement of announcements | searchfilter:searchTitle">
                 <div class="announcement">
                     <p class="announcement-title">{{ announcement.title }}</p>
                     <p class="announcement-description">{{ announcement.description }}</p>

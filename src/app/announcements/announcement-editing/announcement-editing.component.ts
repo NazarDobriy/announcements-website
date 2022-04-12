@@ -15,7 +15,7 @@ export class AnnouncementEditingComponent implements OnInit {
   public orderDetailsForm!: FormGroup;
   public announcement!: IAnnouncement;
   public loading: boolean = false;
-  public id: number = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  public id: number = this.activatedRoute.snapshot.params.id;
 
   constructor(
     private router: Router,

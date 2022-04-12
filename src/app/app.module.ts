@@ -12,7 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { AnnouncementEditingComponent } from './announcements/announcement-editing/announcement-editing.component';
 import { MaterialModule } from './material.module';
 import { httpInterceptorProviders } from './interceptor/interceptor';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchFilterPipe } from './pipes/searchfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     AnnouncementEditingComponent,
     AnnouncementCreatingComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [AnnouncementService, httpInterceptorProviders],
   bootstrap: [AppComponent]

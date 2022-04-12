@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IAnnouncement } from 'src/app/models/announcement.interface';
 import { AnnouncementService } from 'src/app/services/announcement.service';
@@ -9,6 +9,7 @@ import { AnnouncementService } from 'src/app/services/announcement.service';
   styleUrls: ['./announcements-list.component.scss']
 })
 export class AnnouncementsListComponent implements OnInit {
+  public searchTitle: string = '';
   public announcements!: IAnnouncement[];
   public loading: boolean = false;
   public isAnnouncement: boolean = false;
