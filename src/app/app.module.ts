@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { AnnouncementEditingComponent } from './announcements/announcement-editing/announcement-editing.component';
 import { MaterialModule } from './material.module';
 import { httpInterceptorProviders } from './interceptor/interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { httpInterceptorProviders } from './interceptor/interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [AnnouncementService, httpInterceptorProviders],
   bootstrap: [AppComponent]

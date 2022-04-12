@@ -15,4 +15,8 @@ export class AnnouncementService {
   public getAllAnnouncements(): Observable<IAnnouncement[]> {
     return this.http.get<IAnnouncement[]>(this.url + 'all-announcements');
   }
+
+  public createAnnouncement(announcement: IAnnouncement): Observable<IAnnouncement> {
+    return this.http.post<IAnnouncement>(this.url + 'create-announcement', announcement);
+  }
 }

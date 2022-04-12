@@ -1,1 +1,8 @@
-<p>announcement-creating works!</p>
+<div class="container">
+    <p class="container-text">Create new announcement</p>
+    <form [formGroup]="orderDetailsForm">
+        <input type="text" formControlName="title" placeholder="Enter title" class="announcement-input" />
+        <textarea rows="7" formControlName="description" placeholder="Enter description" class="announcement-textarea"></textarea>
+        <button class="btn" (click)="send()" [disabled]="!isInputData()">Send</button>
+    </form>
+</div>

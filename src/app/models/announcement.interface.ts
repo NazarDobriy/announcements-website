@@ -1,6 +1,6 @@
 export interface IAnnouncement {
-    id: number;
+    id?: number;
     title: string;
     description: string;
-    date: string;
+    date?: string;
 }

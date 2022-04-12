@@ -1,0 +1,49 @@
+.container {
+    margin: 0 auto;
+    width: 70%;
+    background-color:cornflowerblue;
+    margin-top: 100px;
+    padding: 25px;
+
+    &-text {
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 0;
+    }
+
+    form {
+        font-family: inherit;
+        letter-spacing: inherit;
+
+        textarea:focus, input:focus {
+            outline: none;
+        }
+
+        textarea, input {
+            border: 2px solid black;
+            border-radius: 12px;
+            width: calc(100% - 28px);
+            margin-bottom: 22px;
+            padding: 6px 12px;
+        }
+
+        .announcement-textarea {
+            display: block;
+        }
+
+        .btn {
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: inherit;
+            border-width: 0;
+            border-radius: 5px;
+            padding: 7px 25px;
+            background-color:limegreen;
+            color: white;
+        }
+
+        button:disabled {
+            background-color: darkolivegreen;
+        }
+    }
+}
