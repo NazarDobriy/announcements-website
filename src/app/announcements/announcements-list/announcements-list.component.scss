@@ -32,18 +32,36 @@
                 .btn-edit {
                     background-color: lightgreen;
                     margin-right: 12px;
+
+                    .link-edit {
+                        text-decoration: none;
+                        color: black;
+                    }
                 }
 
                 .btn-delete {
                     background-color: crimson;
                 }
-
-                .link-edit {
-                    text-decoration: none;
-                    color: black;
-                }
             }
         }
+    }
+
+    .text {
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .text-link {
+        color: blue;
+    }
+
+    .text-link:active {
+        color: blue;
+    }
+
+    .warn-img {
+        display: block;
+        margin: 0 auto;
     }
 
     .spinner {

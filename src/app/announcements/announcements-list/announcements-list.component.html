@@ -1,19 +1,28 @@
 <div class="container">
-    <div *ngIf="loading; else spinner">
-        <div class="announcements-list" *ngFor="let announcement of announcements">
-            <div class="announcement">
-                <p class="announcement-title">{{ announcement.title }}</p>
-                <p class="announcement-description">{{ announcement.description }}</p>
-                <p class="announcement-date">Date: {{ announcement.date }}</p>
-                <div class="announcement-control-buttons">
-                    <button class="btn btn-edit">
-                        <a [routerLink]="['/edit', announcement.id]" class="link-edit">Edit</a>
-                    </button>
-                    <button class="btn btn-delete">Delete</button>
+    <ng-container *ngIf="loading; else spinner">
+        <ng-container *ngIf="isAnnouncement; else text">
+            <div class="announcements-list" *ngFor="let announcement of announcements">
+                <div class="announcement">
+                    <p class="announcement-title">{{ announcement.title }}</p>
+                    <p class="announcement-description">{{ announcement.description }}</p>
+                    <p class="announcement-date">Date: {{ announcement.date }}</p>
+                    <div class="announcement-control-buttons">
+                        <button class="btn btn-edit">
+                            <a [routerLink]="['/edit', announcement.id]" class="link-edit">Edit</a>
+                        </button>
+                        <button class="btn btn-delete">Delete</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </ng-container>
+
+        <ng-template #text>
+            <p class="text">
+                You don't have announcement, but you can create it on <a [routerLink]="['/create']" class="text-link">Create announcement</a> page.
+            </p>
+            <img src="../../../assets/img/warning.png" alt="Warning" class="warn-img">
+        </ng-template>
+    </ng-container>
 
     <ng-template #spinner>
         <mat-spinner color="warn" class="spinner"></mat-spinner>
