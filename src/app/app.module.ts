@@ -28,7 +28,7 @@ import { httpInterceptorProviders } from './interceptor/interceptor';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [AnnouncementService],
+  providers: [AnnouncementService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
