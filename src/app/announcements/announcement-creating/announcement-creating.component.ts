@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { IAnnouncement } from 'src/app/models/announcement.interface';
 import { AnnouncementService } from 'src/app/services/announcement.service';
 
@@ -11,7 +13,12 @@ import { AnnouncementService } from 'src/app/services/announcement.service';
 export class AnnouncementCreatingComponent implements OnInit {
   public orderDetailsForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private announcementService: AnnouncementService) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+    private announcementService: AnnouncementService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -28,7 +35,12 @@ export class AnnouncementCreatingComponent implements OnInit {
     return this.orderDetailsForm.get('title')?.value !== '' && this.orderDetailsForm.get('description')?.value !== '';
   }
 
-  public send(): void {
+  public send() {
+    const snakcBarRef: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open("Announcement is added", 'X', {
+      duration: 2000,
+      verticalPosition: 'top'
+    });
+
     const newAnnouncement: IAnnouncement = {
       title: this.orderDetailsForm.get('title')?.value,
       description: this.orderDetailsForm.get('description')?.value
@@ -36,6 +48,10 @@ export class AnnouncementCreatingComponent implements OnInit {
     this.announcementService.createAnnouncement(newAnnouncement).subscribe(() => {
       this.orderDetailsForm.get('title')?.setValue('');
       this.orderDetailsForm.get('description')?.setValue('');
+
+      snakcBarRef.afterDismissed().subscribe(() => {
+        this.router.navigate(['/']);
+      });
     });
   }
 
