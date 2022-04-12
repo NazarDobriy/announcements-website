@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AnnouncementEditingComponent } from './announcements/announcement-editing/announcement-editing.component';
 import { MaterialModule } from './material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { httpInterceptorProviders } from './interceptor/interceptor';
 
 @NgModule({
   declarations: [
