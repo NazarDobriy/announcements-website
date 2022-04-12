@@ -10,7 +10,7 @@
                         <button class="btn btn-edit">
                             <a [routerLink]="['/edit', announcement.id]" class="link-edit">Edit</a>
                         </button>
-                        <button class="btn btn-delete">Delete</button>
+                        <button class="btn btn-delete" (click)="deleteAnnouncement(announcement.id)">Delete</button>
                     </div>
                 </div>
             </div>

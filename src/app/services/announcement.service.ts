@@ -16,7 +16,11 @@ export class AnnouncementService {
     return this.http.get<IAnnouncement[]>(this.url + 'all-announcements');
   }
 
-  public createAnnouncement(announcement: IAnnouncement): Observable<IAnnouncement> {
-    return this.http.post<IAnnouncement>(this.url + 'create-announcement', announcement);
+  public createAnnouncement(announcement: IAnnouncement): Observable<object> {
+    return this.http.post<object>(this.url + 'create-announcement', announcement);
+  }
+
+  public deleteAnnouncementById(id: number): Observable<object> {
+    return this.http.delete<object>(this.url + "delete-announcement/" + id);
   }
 }
