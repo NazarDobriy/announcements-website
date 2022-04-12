@@ -1,9 +1,15 @@
 <div class="container">
-    <p class="container-text">Edit exist announcement</p>
-    <form [formGroup]="orderDetailsForm">
-        <input type="text" formControlName="title" placeholder="Enter title" class="announcement-input" />
-        <textarea rows="7" formControlName="description" placeholder="Enter description" class="announcement-textarea"></textarea>
-        <button class="btn" (click)="saveChanges()" [disabled]="!isInputData()">Save</button>
-    </form>
+    <div *ngIf="loading; else spinner" class="container-edit">
+        <p class="container-text">Edit exist announcement</p>
+        <form [formGroup]="orderDetailsForm">
+            <input type="text" formControlName="title" placeholder="Enter title" class="announcement-input" />
+            <textarea rows="7" formControlName="description" placeholder="Enter description" class="announcement-textarea"></textarea>
+            <button class="btn" (click)="saveChanges()" [disabled]="!isInputData()">Save</button>
+        </form>
+    </div>
+
+    <ng-template #spinner>
+        <mat-spinner color="warn" class="spinner"></mat-spinner>
+    </ng-template>
 </div>
 

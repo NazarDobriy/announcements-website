@@ -27,4 +27,8 @@ export class AnnouncementService {
   public getAnnouncementById(id: number): Observable<IAnnouncement> {
     return this.http.get<IAnnouncement>(this.url + "announcement/" + id);
   }
+
+  public editAnnouncement(id: number, newAnnouncement: IAnnouncement): Observable<object> {
+    return this.http.put<object>(this.url + "update-announcement/" + id, newAnnouncement);
+  }
 }

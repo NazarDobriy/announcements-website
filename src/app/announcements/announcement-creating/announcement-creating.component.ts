@@ -35,7 +35,7 @@ export class AnnouncementCreatingComponent implements OnInit {
     return this.orderDetailsForm.get('title')?.value !== '' && this.orderDetailsForm.get('description')?.value !== '';
   }
 
-  public send() {
+  public send(): void {
     const snakcBarRef: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open("Announcement is added", 'X', {
       duration: 2000,
       verticalPosition: 'top'

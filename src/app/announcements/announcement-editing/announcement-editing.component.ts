@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IAnnouncement } from 'src/app/models/announcement.interface';
 import { AnnouncementService } from 'src/app/services/announcement.service';
 
@@ -14,9 +14,11 @@ import { AnnouncementService } from 'src/app/services/announcement.service';
 export class AnnouncementEditingComponent implements OnInit {
   public orderDetailsForm!: FormGroup;
   public announcement!: IAnnouncement;
+  public loading: boolean = false;
   public id: number = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
@@ -26,18 +28,20 @@ export class AnnouncementEditingComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.announcementService.getAnnouncementById(this.id).subscribe((responce: IAnnouncement) => {
+      this.loading = true;
       this.announcement = responce;
-      this.initForm(responce.title, responce.description);
+      this.orderDetailsForm.get('title')?.setValue(responce.title);
+      this.orderDetailsForm.get('description')?.setValue(responce.description);
     }, (error: HttpErrorResponse) => {
       console.log(error);
       window.location.href = error.url!;
     });
   }
 
-  public initForm(announcementTitle: string = '', announcementDescription: string = ''): void {
+  public initForm(): void {
     this.orderDetailsForm = this.fb.group({
-      title: new FormControl(announcementTitle, [Validators.required]),
-      description: new FormControl(announcementDescription, [Validators.required])
+      title: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required])
     });
   }
 
@@ -46,6 +50,18 @@ export class AnnouncementEditingComponent implements OnInit {
   }
 
   public saveChanges(): void {
+    this.announcement.title = this.orderDetailsForm.get('title')?.value;
+    this.announcement.description = this.orderDetailsForm.get('description')?.value;
 
+    this.announcementService.editAnnouncement(this.id, this.announcement).subscribe(() => {
+      const snakcBarRef: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open("Announcement is added", 'X', {
+        duration: 2000,
+        verticalPosition: 'top'
+      });
+
+      snakcBarRef.afterDismissed().subscribe(() => {
+        this.router.navigate(['/']);
+      });
+    });
   }
 }
