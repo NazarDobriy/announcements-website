@@ -23,4 +23,8 @@ export class AnnouncementService {
   public deleteAnnouncementById(id: number): Observable<object> {
     return this.http.delete<object>(this.url + "delete-announcement/" + id);
   }
+
+  public getAnnouncementById(id: number): Observable<IAnnouncement> {
+    return this.http.get<IAnnouncement>(this.url + "announcement/" + id);
+  }
 }

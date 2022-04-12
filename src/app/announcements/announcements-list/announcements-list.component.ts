@@ -44,5 +44,4 @@ export class AnnouncementsListComponent implements OnInit {
       verticalPosition: 'top'
     });
   }
-
 }
