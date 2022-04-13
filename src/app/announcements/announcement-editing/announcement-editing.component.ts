@@ -64,4 +64,5 @@ export class AnnouncementEditingComponent implements OnInit {
       });
     });
   }
+  
 }
