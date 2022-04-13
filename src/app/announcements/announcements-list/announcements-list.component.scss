@@ -90,3 +90,53 @@
         transform: translateX(-50%) translateY(-50%);
     }
 }
+
+@media only screen and (max-width: 650px) {
+    .container {
+        .announcements-list {
+            .announcement {
+                &-description {
+                    font-size: 15px;
+                }
+
+                &-date {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .container {
+        .search {
+            &-img {
+                display: none;
+            }
+
+            &-input {
+                width: 100%;
+            }
+        }
+
+        .announcements-list {
+            .announcement {
+                &-title {
+                    font-size: 15px;
+                }
+
+                &-description {
+                    font-size: 14px;
+                }
+
+                &-date {
+                    font-size: 14px;
+                }
+
+                &-control-buttons {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -57,3 +57,34 @@
         transform: translateX(-50%) translateY(-50%);
     }
 }
+
+@media only screen and (max-width: 650px) {
+    .container {
+        
+        &-edit {
+            .container-text {
+                text-align: center;
+                font-size: 21px;
+            }
+        }
+
+        form {
+            .btn {
+                display: block;
+                margin: 0 auto;
+                padding: 7px 30px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .container {
+        
+        &-edit {
+            .container-text {
+                font-size: 19px;
+            }
+        }
+    }
+}
