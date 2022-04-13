@@ -4,6 +4,7 @@
 
     .search {
         display: flex;
+        align-items: center;
         margin: 25px 0;
 
         input:focus {
@@ -18,6 +19,10 @@
             width: 30%;
             padding: 5px 10px;
             border: 2px solid black;
+        }
+
+        &-checkbox {
+            margin-left: 20px;
         }
     }
 
@@ -116,6 +121,10 @@
 
             &-input {
                 width: 100%;
+            }
+
+            &-checkbox {
+                font-size: 14px;
             }
         }
 
