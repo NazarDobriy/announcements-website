@@ -73,7 +73,6 @@ export class AnnouncementsListComponent implements OnInit {
     const uniqueAnnouncements: Set<number> = new Set();
     for (let i = 0; i < this.announcements.length; i++) {
       for (let j = i + 1; j < this.announcements.length; j++) {
-        //debugger;
         const isSimilarTitle: boolean = this.isSimilarText(
           this.announcements[i].title.toLocaleLowerCase(), 
           this.announcements[j].title.toLocaleLowerCase()
