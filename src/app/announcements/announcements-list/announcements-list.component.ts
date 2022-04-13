@@ -52,11 +52,19 @@ export class AnnouncementsListComponent implements OnInit {
 
   public isSimilarText(str1: string, str2: string): boolean {
     let result: boolean = false;
-    str2.split(' ').forEach((word) => {
-      if (str1.includes(word)) {
-        result = true;
-      }
-    });
+    if (str1.split(' ').length === 1) {
+      str2.split(' ').forEach((word) => {
+        if (word === str1) {
+          result = true;
+        }
+      });
+    } else {
+      str2.split(' ').forEach((word) => {
+        if (str1.includes(word)) {
+          result = true;
+        }
+      });
+    }
     return result;
   }
 
@@ -65,6 +73,7 @@ export class AnnouncementsListComponent implements OnInit {
     const uniqueAnnouncements: Set<number> = new Set();
     for (let i = 0; i < this.announcements.length; i++) {
       for (let j = i + 1; j < this.announcements.length; j++) {
+        //debugger;
         const isSimilarTitle: boolean = this.isSimilarText(
           this.announcements[i].title.toLocaleLowerCase(), 
           this.announcements[j].title.toLocaleLowerCase()
