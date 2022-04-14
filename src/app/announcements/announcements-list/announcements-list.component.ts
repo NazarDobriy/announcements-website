@@ -38,6 +38,7 @@ export class AnnouncementsListComponent implements OnInit {
         });
 
         this.copyAnnouncements = this.announcements;
+        this.isAnnouncement = !(this.announcements.length === 0);
 
         this.snackBar.open("Announcement is deleted", 'X', {
           duration: 2000,
