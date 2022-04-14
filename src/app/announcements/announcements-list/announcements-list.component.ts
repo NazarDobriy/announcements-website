@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IAnnouncement } from 'src/app/models/announcement.interface';
@@ -29,13 +29,15 @@ export class AnnouncementsListComponent implements OnInit {
       }
     });
   }
-
+  
   public deleteAnnouncement(id: number | undefined): void {
     if (typeof id === 'number') {
       this.announcementService.deleteAnnouncementById(id).subscribe(() => {
         this.announcements = this.announcements.filter((announcement: IAnnouncement) => {
           return announcement.id != id;
         });
+
+        this.copyAnnouncements = this.announcements;
 
         this.snackBar.open("Announcement is deleted", 'X', {
           duration: 2000,

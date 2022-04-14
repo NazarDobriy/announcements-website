@@ -54,7 +54,7 @@ export class AnnouncementEditingComponent implements OnInit {
     this.announcement.description = this.orderDetailsForm.get('description')?.value;
 
     this.announcementService.editAnnouncement(this.id, this.announcement).subscribe(() => {
-      const snakcBarRef: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open("Announcement is added", 'X', {
+      const snakcBarRef: MatSnackBarRef<SimpleSnackBar> = this.snackBar.open("Announcement is edited", 'X', {
         duration: 2000,
         verticalPosition: 'top'
       });
